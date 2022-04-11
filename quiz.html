@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Quiz Musical - Luis Abranches</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+  <header>
+      <div class="caixa">
+      <h1><img src="logo-aula.png" alt="Logo Aulas de violão"></h1>
+      <nav>
+          <ul>
+            <li><a id="cor" href="index.html">Home</a></li>
+            <li><a href="video.html">Vídeo Alunos & Professor</a></li>
+            <li><a href="plano.html">Planos de Aula</a></li>
+            <li><a id="cor" href="contato.html">Contato</a></li>
+            <li><a href="quiz.html">Quiz Musical</a></li>
+          </ul>
+        </nav>
+    </div>
+    </header>
+
+  <body>
+        <div class="container1">
+            <h2 class="titulo-principal">
+                Testando Seus Conhecimentos Musicais
+            </h2>
+              <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/a-musica-pode-ser-uma-otima-ferramenta-para-professor-utilizar-em-sala-aula-5bd705e81a5ef.jpg" class="page-logo" alt=""><br>
+                <p class="titulo-principal">
+                      1 - Qual é o número mínimo de notas<br> para formar um acorde?
+                    </p>
+                    <img src="foto-acorde.png" class="page-logo">
+                    <input type="number" id="valor" class="input-notas" placeholder="Digite uma das Alternativas: 4 - 3 - 5" onfocus="this.value='';" /><br>
+                    <button type="submit" onclick="Chutar()" class="chutar" >Responder</button>
+                    <h2 class="resultado" id="resultado"></h2>
+                  </div>
+                  <a href="https://alura.com.br/" target="_blank">
+                  </a>
+                  <script src="app.js"></script>
+
+                   <p class="titulo-principal">
+                    2 - Quantas Sinfonias Beethoven Compôs?
+                </p>
+                  <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD4A_TkAdQoQqdwyMWPNJV47Kjp_uoQjB6Q0V1jmF9ad5Eflgz class="page-logo3">
+                  <input type="number" id="valor2" class="input-notas" placeholder="Digite uma das Alternativas: 5 - 15 - 9" onfocus="this.value='';"/><br>
+                  <button type="submit" onclick="Chutar2()" class="chutar">Responder</button>
+                  <h2 class="resultado2" id="resultado2"></h2>
+
+                  <p class="titulo-principal">
+                    3 - Qual foi o ano de lançamento do primeiro álbum <br> dos The Beatles "Please Please Me"?
+                </p>
+
+                  <img src=https://http2.mlstatic.com/D_NQ_NP_217325-MLB25430652002_032017-O.jpg class="page-logo4">
+                  <input type="number" id="valor3" class="input-notas" placeholder="Digite uma das Alternativas: 1920 - 1951 - 1963" onfocus="this.value='';"/><br>
+                  <button type="submit" onclick="Chutar3()" class="chutar">Responder</button>
+                  <h2 class="resultado3" id="resultado3"></h2>
+
+                  <p class="titulo-principal">
+                    4 - Qual é a distância<strong> (ascendente)</strong> em tons<br> da nota Dó até a nota Lá
+                </p>
+
+                  <img src=https://essaseoutras.com.br/wp-content/uploads/2015/07/notas-musicais-e-sua-representa%C3%A7%C3%A3o-na-pauta-clave-de-sol--e1437161991784.jpg class="page-logo"> 
+                  <input type="number" id="valor4" class="input-notas" placeholder="Digite uma das Alternativas: 3 - 2.5 - 4.5"  onfocus="this.value='';"/><br>
+                  <button type="submit" onclick="Chutar4()" class="chutar">Responder</button>
+                  <h2 class="resultado4" id="resultado4"></h2>
+
+
+                </div>
+                <script src="app.js"></script>
+
+                <footer>
+      <img class="imagem-roda" src="logo-pb.png" alt="Logo Aulas de Violão">
+      <p class="copyright">&copy; Copyright</strong> Aulas de Violão Luis Abranches - 2022</p>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <a href="https://api.whatsapp.com/send?phone=11996332082&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+</a>
+    </footer>
+          </body>
+          </html>
+
+          <script>
+            var numeroSecreto = parseInt(3);
+function Chutar() {
+  var elementoResultado = document.getElementById("resultado");
+  var chute = parseInt(document.getElementById("valor").value);
+  console.log(chute);
+  if (chute == numeroSecreto) {
+    elementoResultado.innerHTML = "Você Acertou!";
+  } 
+   else {
+    elementoResultado.innerHTML = "Você Errou!";
+  }
+}
+
+var numeroSecreto2 = parseInt(9);
+function Chutar2() {
+  var elementoResultado = document.getElementById("resultado2");
+  var chute2 = parseInt(document.getElementById("valor2").value);
+  console.log(chute2);
+  if (chute2 == numeroSecreto2) {
+    elementoResultado.innerHTML = "Você Acertou!";
+  } 
+   else {
+    elementoResultado.innerHTML = "Você Errou!";
+  }
+}
+
+var numeroSecreto3 = parseInt(1963);
+function Chutar3() {
+  var elementoResultado = document.getElementById("resultado3");
+  var chute3 = parseInt(document.getElementById("valor3").value);
+  console.log(chute3);
+  if (chute3 == numeroSecreto3) {
+    elementoResultado.innerHTML = "Você Acertou!";
+  } 
+   else {
+    elementoResultado.innerHTML = "Você Errou!";
+  }
+}
+
+var numeroSecreto4 = parseInt(4.5);
+function Chutar4() {
+  var elementoResultado = document.getElementById("resultado4");
+  var chute4 = parseInt(document.getElementById("valor4").value);
+  console.log(chute4);
+  if (chute4 == numeroSecreto4) {
+    elementoResultado.innerHTML = "Você Acertou!";
+  } 
+   else {
+    elementoResultado.innerHTML = "Você Errou!";
+  }
+}
+
+
+          </script>

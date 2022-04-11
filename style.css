@@ -1,0 +1,433 @@
+
+
+html, body 
+{ 
+ height: 100%;
+ overflow-x: hidden;
+ 
+}
+
+body {
+	background: linear-gradient( #FEFEFE, #888888);
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+header {
+	padding: 35px 20px;
+	text-align: left;
+}
+
+
+
+.caixa {
+	position: relative;
+	width: 940px;
+	margin: 0 auto;
+}
+
+nav {
+	position: absolute;
+	top: 110px;
+	right: 0;
+
+}
+
+nav li {
+	display: block;
+	margin: 0 0 0 15px;
+	text-align: left;
+	line-height: 2.5;
+
+}
+
+nav a {
+	text-transform: uppercase;
+	color: #000000;
+	font-weight: bold;
+	font-size: 25px;
+	text-decoration: none;
+}
+
+
+
+nav a :hover {
+	color: #C78C19;
+	text-decoration: underline;
+}
+
+.banner {
+	width: 100%;
+}
+
+main {
+	background: linear-gradient(#FEFEFE, #888888);
+
+}
+
+
+.titulo-principal {
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	margin: 0 0 1em;
+ 	clear: left;
+ 	line-height: 1.5;
+}
+
+  .paragrafo {
+	font-size: 20px;
+	padding: 25px 0;
+ 	width: 940px;
+ 	margin: 0 auto;
+ 	line-height: 1.5;
+}
+
+.paragrafo strong {
+	font-weight: bold;
+}
+
+.logo2{
+	width: 280px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+
+
+}
+
+.logo2:hover {
+	opacity: 0.3;
+	transition: 400ms;
+}
+
+.p-metodo {
+
+	margin-bottom: 40px;
+}
+
+.imagem-metodo {
+	width: 250px;
+ 	box-shadow: 10px 10px 10px 0 #000000;
+ 	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;:  
+}
+
+.imagem-metodo:hover {
+	opacity: 0.3;
+	transition: 400ms;
+}
+
+.sobreprofessor {
+	display: inline-block;
+}
+
+
+
+ #mapatexto {
+	
+
+ }
+
+ .mapa-conteudo {
+ 	width: 940px;
+ 	margin:0 auto 20px; 
+
+
+ 	
+ }
+
+
+footer {
+	text-align: center;
+	background: url("bg.jpg");
+	padding: 50px 0;
+	color: white;
+
+
+}
+
+footer img {
+ 	width: 280px;
+ 	padding: 50px 0 ;
+
+
+
+ }
+
+ /* CSS do video.html*/
+
+
+
+/* botão Whatsapp */
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+/* CSS do plano.html*/
+
+ table {
+ 	margin: 20px 0 40px;
+ }
+
+ thead {
+ 	background: #555555;
+ 	color: white;
+ 	font-weight: bold;
+ }
+
+ td, th {
+ 	border: 1px solid #000000;
+ 	padding: 15px 12px;
+ 	text-align: center;
+
+ }
+
+ div#container {
+ 	overflow-x: auto;
+ }
+
+ .container {max-width: 700px;}
+
+ .div-video{
+ 	
+ 	width: 100%;
+ 	margin-bottom: 60px;
+ 	padding-top: 56.26%;
+ 	position: relative;
+
+ }
+
+.div-video iframe{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	border-radius: 10px;
+
+}
+
+
+ /* CSS contato.html*/
+
+ form {
+ 	margin: 40px 0 0 45px;
+ 	width: center;
+ }
+
+ form label, form legend {
+ 	display: block;
+ 	font-size: 20px;
+ 	margin-left: auto;
+    margin-right: auto;
+ 	line-height: 1.5;
+ }
+
+ .input-padrao {
+ 	display: block;
+ 	margin: 0 0 30px;
+ 	padding: 10px 25px 20px;
+ 	width: 50%;
+ }
+
+ .checkbox {
+ 	margin: 20px 0;
+ }
+
+ .enviar {
+ 	width: 40%;
+ 	padding: 15px 0 15px 10px;
+ 	background: orange;
+ 	color: white;
+ 	font-weight: bold;
+ 	font-size: 20px;
+ 	border: none;
+ 	border-radius: 5px;
+ 	transition: 1s all;
+ 	cursor: pointer;
+ }
+
+ .enviar:hover {
+ 	background: darkorange;
+ 	transform: scale(1.2);
+
+ }
+
+ /*CSS quiz.html */
+
+ .chutar {
+ 	display: block;
+ 	width: 15%;
+ 	padding: 15px 0 15px 10px;
+ 	background: green;
+ 	color: white;
+ 	font-weight: bold;
+ 	font-size: 20px;
+ 	border: none;
+ 	cursor: pointer;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+ 	transition: 1s all;
+ 	cursor: pointer;
+ 	
+
+ }
+
+.input-notas {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+ 	padding: 10px 25px 20px;
+ 	width: 34%;
+ 	font-size: 20px;
+ 	text-align: center;
+
+
+}
+
+.page-logo {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 25%;
+
+}
+
+.page-logo3 {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 12%;
+
+}
+
+.page-logo4 {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 16%;
+}
+
+
+.resultado, .resultado2, .resultado3, .resultado4 {
+  color: darkorange;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  font-size: 35px;
+  font-weight: bold;
+
+}
+
+/* codigo para Responsivo */
+
+@media screen and (max-width: 480px) {
+
+   h1 img, p, .principal, .banner, .conteudo-beneficios, .mapa-conteudo, .p-metodo, .paragrafo {
+        width: auto;
+        font-size: clamp(1.75em, 1em, 3vw, 2.5em)
+        
+   }
+
+  h1 img, nav, .caixa {
+  	width: 75%;
+  	 font-size: clamp(1.75em, 1em, 3vw, 2.5em)
+  	 flex-direction: column;
+
+  }
+
+  nav {
+	width: 100%;
+  	top: 20px;
+  	font-size: 3vw
+  }
+
+  nav a {
+  	width: 100%;
+  	font-size: 3vw
+  }
+
+  nav li {
+  	margin-left: 225px;
+  	margin-right: auto;
+	text-align: left;
+	line-height: 1.5;
+
+
+  }
+
+  .banner {
+  	width: 100%;
+  }
+
+  .logo2 {
+  	width: 180px;
+  	
+  }
+
+  .float {
+  	bottom: 110px;
+
+  }
+
+  .enviar{
+  	width: 80%;
+  }
+
+.input-notas {
+
+	width: 70%;
+	font-size: 12px;
+	text-align: center;
+}
+
+.chutar,.page-logo3, .page-logo4 {
+
+	width: 40%;
+}
+
+ .page-logo {
+ 	width: 60%
+ }
+
+footer img {
+ 	width: 150px;
+ 	padding: 50px 0 ;
+ }
+
+  
+
+.div-video iframe{
+	
+	
+	left: 0px;
+	
+
+}
+
+ 
+}
+
