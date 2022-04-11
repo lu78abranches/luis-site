@@ -16,6 +16,7 @@ body {
 header {
 	padding: 35px 20px;
 	text-align: left;
+
 }
 
 
@@ -361,20 +362,20 @@ footer img {
 
   nav {
 	width: 100%;
-  	top: 20px;
+  	top: 0;
   	font-size: 3vw
   }
 
   nav a {
   	width: 100%;
-  	font-size: 3vw
+  	font-size: 4.5vw
   }
 
   nav li {
-  	margin-left: 225px;
+  	margin-left: 210px;
   	margin-right: auto;
 	text-align: left;
-	line-height: 1.5;
+	line-height: 1.6;
 
 
   }
