@@ -78,9 +78,9 @@ main {
 
   .paragrafo {
 	font-size: 20px;
-	padding: 25px 0;
- 	width: 940px;
- 	margin: 0 auto;
+	padding: 30px 0;
+ 	width: 1440px;
+ 	margin-left: 28px;
  	line-height: 1.5;
 }
 
@@ -345,18 +345,20 @@ footer img {
 
 /* codigo para Responsivo */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
 
    h1 img, p, .principal, .banner, .conteudo-beneficios, .mapa-conteudo, .p-metodo, .paragrafo {
         width: auto;
         font-size: clamp(1.75em, 1em, 3vw, 2.5em)
+		
+		
         
    }
 
   h1 img, nav, .caixa {
   	width: 75%;
   	 font-size: clamp(1.75em, 1em, 3vw, 2.5em)
-  	 flex-direction: column;
+  	 flex-direction column;
 
   }
 
@@ -375,7 +377,7 @@ footer img {
   	margin-left: 210px;
   	margin-right: auto;
 	text-align: left;
-	line-height: 1.6;
+	line-height: 2.1;
 
 
   }
