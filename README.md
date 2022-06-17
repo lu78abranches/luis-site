@@ -1,4 +1,4 @@
-# Minha página da web que desenvolvi com conhecimentos adquiridos atráves de cursos de HTML3 CSS3 e um pouco de Java Script.
+# Minha página da web que desenvolvi com conhecimentos adquiridos através de cursos de HTML3 CSS3 e um pouco de Java Script.
 
 ## 🎸🎸Site de Aulas de Violão🎸🎸
 
