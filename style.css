@@ -8,8 +8,59 @@ html, body
 }
 
 body {
-	background: linear-gradient( #FEFEFE, #888888);
-	font-family: 'Montserrat', sans-serif;
+	font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 20px;
+			margin: 0;
+			
+}
+
+iframe {
+	width: 100%; /* Ajuste conforme necessário */
+	max-width: 1080px; /* Defina a largura máxima do vídeo */
+	height: auto; /* Para manter a proporção do vídeo */
+	margin-bottom: 20px;
+}
+
+.div-video {
+	margin: 0 auto;
+	margin-bottom: 20px;
+
+ }
+
+
+
+/* reel insta */
+
+.instagram-media-container {
+	width: 100%;
+	max-width: 500px; /* Defina a largura máxima do Reel */
+	height: 0;
+	padding-bottom: 150.25%; /* Proporção 16:9 para o vídeo */
+	position: relative;
+	margin: 0 auto; /* Centraliza o Reel na página */
+}
+
+.instagram-media {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cta-button {
+	display: inline-block;
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+.cta-button:hover {
+	background-color: #cc5500;
 }
 
 
@@ -23,7 +74,7 @@ header {
 
 .caixa {
 	position: relative;
-	width: 940px;
+	width: 1080px;
 	margin: 0 auto;
 }
 
@@ -79,9 +130,10 @@ main {
   .paragrafo {
 	font-size: 20px;
 	padding: 30px 0;
- 	width: 1440px;
- 	margin-left: 28px;
+ 	width: 1440px;;
  	line-height: 1.5;
+	 max-width: 600px;
+	 margin: 0 auto;
 }
 
 .paragrafo strong {
@@ -127,10 +179,6 @@ main {
 
 
 
- #mapatexto {
-	
-
- }
 
  .mapa-conteudo {
  	width: 940px;
@@ -211,9 +259,11 @@ footer img {
  .div-video{
  	
  	width: 100%;
- 	margin-bottom: 60px;
+	margin: 0 auto;
  	padding-top: 56.26%;
  	position: relative;
+	margin-bottom: 20px;
+
 
  }
 
@@ -222,8 +272,9 @@ footer img {
 	height: 100%;
 	position: absolute;
 	top: 0px;
-	left: 400px;
 	border-radius: 10px;
+	
+	
 
 }
 
@@ -355,6 +406,11 @@ footer img {
         
    }
 
+   .container{
+	margin: 0 auto;
+   }
+   
+
   h1 img, nav, .caixa {
   	width: 75%;
   	 font-size: clamp(1.75em, 1em, 3vw, 2.5em)
@@ -419,6 +475,10 @@ footer img {
 footer img {
  	width: 150px;
  	padding: 50px 0 ;
+ }
+
+ .div-video {
+	margin: 0 auto;
  }
 
   
