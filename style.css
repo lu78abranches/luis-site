@@ -52,9 +52,11 @@ iframe {
 
 .cta-button {
 	display: inline-block;
+	
 	background-color: #ff6600;
 	color: #fff;
 	padding: 10px 20px;
+	margin-left: 40px;
 	text-decoration: none;
 	border-radius: 5px;
 	transition: background-color 0.3s;
@@ -154,6 +156,15 @@ main {
 	transition: 400ms;
 }
 
+.principal {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
 .p-metodo {
 
 	margin-bottom: 40px;
@@ -177,6 +188,32 @@ main {
 	display: inline-block;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+  th:first-child, td:first-child {
+    border-left: 1px solid #ddd;
+  }
+  th:last-child, td:last-child {
+    border-right: 1px solid #ddd;
+  }
+
+  li {
+	list-style-type: none;
+  }
 
 
 
