@@ -51,15 +51,17 @@ iframe {
 }
 
 .cta-button {
-	display: inline-block;
-	
-	background-color: #ff6600;
-	color: #fff;
-	padding: 10px 20px;
-	margin-left: 40px;
-	text-decoration: none;
-	border-radius: 5px;
-	transition: background-color 0.3s;
+    display: block; /* Define como bloco para centralizar horizontalmente */
+    width: 200px; /* Largura do botão */
+    margin: 0 auto; /* Centraliza horizontalmente */
+	margin-bottom: 25px;
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 7px 7px; /* Espaçamento interno */
+    background-color: #007bff; /* Cor de fundo */
+    color: #ffffff; /* Cor do texto */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Arredondamento dos cantos */
+    text-decoration: none; /* Remove o sublinhado */
 }
 .cta-button:hover {
 	background-color: #cc5500;
@@ -75,11 +77,12 @@ header {
 
 
 .caixa {
-	position: relative;
-	width: 1080px;
-	margin: 0 auto;
-}
-
+    text-align: center; /* Alinha o conteúdo ao centro */
+  }
+  .logo-aula {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura da div pai */
+    height: auto; /* Mantém a proporção da imagem */
+  }
 nav {
 	position: absolute;
 	top: 110px;
@@ -142,6 +145,10 @@ main {
 	font-weight: bold;
 }
 
+.logo-aula {
+	width: 750px;
+}
+
 .logo2{
 	width: 280px;
 	display: block;
@@ -159,7 +166,7 @@ main {
 .principal {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     background-color: #f8f9fa;
     color: #333;
@@ -193,6 +200,7 @@ table {
     border-collapse: collapse;
     border: 1px solid #ddd;
     margin-top: 20px;
+	margin-bottom: 30px;
   }
   th, td {
     padding: 10px;
@@ -215,22 +223,18 @@ table {
 	list-style-type: none;
   }
 
+  .tabela-formato {
+	background-color: crimson;
+  }
 
 
- .mapa-conteudo {
- 	width: 940px;
- 	margin:0 auto 20px; 
-
-
- 	
- }
 
 
 footer {
 	text-align: center;
-	background: url("bg.jpg");
-	padding: 50px 0;
-	color: white;
+	
+	padding: 100px 0;
+	color: black;
 
 
 }
@@ -290,6 +294,30 @@ footer img {
  div#container {
  	overflow-x: auto;
  }
+
+ .imagem-depoimento {
+    max-width: 65%; /* Tamanho máximo da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Exibe a imagem como bloco para centralizar */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    border: 1px solid #dcdcdc; /* Borda sólida */
+    border-radius: 10px; /* Raio do arredondamento da borda */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+	margin-bottom: 70px;
+	
+	
+}
+
+/* Consulta de mídia para ajustar o tamanho da imagem em telas menores */
+@media screen and (max-width: 768px) {
+    .imagem-depoimento {
+        max-width: 100%; /* Altera o tamanho máximo da imagem para ocupar toda a largura da tela em telas menores */
+    }
+
+	.cta-button {
+        width: 100%; /* Define a largura do botão para ocupar toda a largura da tela em telas menores */
+    }
+}
 
  .container {max-width: 700px;}
 
@@ -448,7 +476,7 @@ footer img {
    }
    
 
-  h1 img, nav, .caixa {
+  h1 img, nav  {
   	width: 75%;
   	 font-size: clamp(1.75em, 1em, 3vw, 2.5em)
   	 flex-direction column;
