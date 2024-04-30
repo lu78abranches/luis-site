@@ -232,6 +232,18 @@ table {
 	overflow-x: auto;
   }
 
+  .check {
+    content: '\2714'; /* código Unicode para o símbolo de check */
+        color: white;
+        background-color: green; /* cor de fundo do círculo */
+        border-radius: 50%; /* torna o 'v' circular */
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        display: inline-block;
+        margin-right: 5px; /* espaço entre o 'v' e o círculo */
+}
+
 
 
 
