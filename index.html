@@ -97,7 +97,8 @@
 				<img src="tocador-td-idades.png" class="imagem-metodo" alt="Pessoas de todas as idades aprendendo a tocar violão">
 				<br>
 				<p>Clique no botão abaixo para dar o primeiro passo!</p>
-				<br><a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button" id="btn-whatsapp">Marcar Aula Experimental</a>
+				<br><a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button js-whatsapp-cta">Marcar Aula Experimental</a>
+				<button type="button" class="cta-button-secondary js-open-email-form" data-context="principal"><i class="fa fa-envelope"></i> Marcar por E-mail</button>
 
 			</div>
 		</section>
@@ -161,7 +162,8 @@
 
 
 
-				<br><a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button" id="btn-whatsapp">Marcar Aula Experimental</a>
+				<br><a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button js-whatsapp-cta">Marcar Aula Experimental</a>
+				<button type="button" class="cta-button-secondary js-open-email-form" data-context="principal"><i class="fa fa-envelope"></i> Marcar por E-mail</button>
 
 
 				<h2 class="titulo-principal">Método - O que o aluno intermediário vai aprender</h2>
@@ -210,7 +212,8 @@
 
 				</div>
 
-				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button" id="btn-whatsapp">Marcar Aula Experimental</a>
+				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button js-whatsapp-cta">Marcar Aula Experimental</a>
+				<button type="button" class="cta-button-secondary js-open-email-form" data-context="principal"><i class="fa fa-envelope"></i> Marcar por E-mail</button>
 
 
 				<br>
@@ -266,7 +269,8 @@
 						musical e alcançar seus objetivos!</p>
 				</div>
 
-				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button" id="btn-whatsapp">Marcar Aula Experimental</a>
+				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button js-whatsapp-cta">Marcar Aula Experimental</a>
+				<button type="button" class="cta-button-secondary js-open-email-form" data-context="principal"><i class="fa fa-envelope"></i> Marcar por E-mail</button>
 
 
 				<h2 class="titulo-principal">Quais formatos de aula você pode fazer</h2>
@@ -314,7 +318,8 @@
 
 				<img src="tocador-comece.png" class="imagem-metodo" alt="Comece hoje a tocar violão">
 
-				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button" id="btn-whatsapp">Marcar Aula Experimental</a>
+				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button js-whatsapp-cta">Marcar Aula Experimental</a>
+				<button type="button" class="cta-button-secondary js-open-email-form" data-context="principal"><i class="fa fa-envelope"></i> Marcar por E-mail</button>
 
 
 				<div class="instagram-media-container">
@@ -338,7 +343,8 @@
 				<!-- TODO: mesma coisa aqui -->
 				<img src="2.png" class="imagem-depoimento" alt="Depoimento de seguidor sobre as aulas de violão com Luis Abranches" loading="lazy">
 
-				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button" id="btn-whatsapp">Marcar Aula Experimental</a>
+				<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="cta-button js-whatsapp-cta">Marcar Aula Experimental</a>
+				<button type="button" class="cta-button-secondary js-open-email-form" data-context="principal"><i class="fa fa-envelope"></i> Marcar por E-mail</button>
 
 
 				<div class="instagram-media-container">
@@ -365,25 +371,116 @@
 	</main>
 	<footer>
 		<img class="imagem-roda" src="logo-pb.png" alt="Logo Aulas de Violão">
-		<p class="copyright">&copy; Copyright <strong>Violão Luis Abranches - 2026</strong></p>
+		<p class="copyright">&copy; Copyright <strong>Violão Luis Abranches - 2024</strong></p>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="float" target="_blank" id="btn-whatsapp-flutuante" aria-label="Marcar aula experimental pelo WhatsApp">
 	<i class="fa fa-whatsapp my-float"></i>
 </a>
 
+	<button type="button" class="float float-email js-open-email-form" data-context="flutuante" aria-label="Marcar aula experimental por e-mail">
+	<i class="fa fa-envelope my-float"></i>
+</button>
+
+	<!-- Modal do formulário de contato por e-mail -->
+	<div class="email-modal-overlay" id="email-modal-overlay">
+		<div class="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-titulo">
+			<button type="button" class="email-modal-fechar" id="email-modal-fechar" aria-label="Fechar formulário">&times;</button>
+			<h3 id="email-modal-titulo">Marcar aula por e-mail</h3>
+			<p>Preencha seus dados abaixo. Vamos abrir seu aplicativo de e-mail com a mensagem já pronta para enviar.</p>
+			<form id="email-modal-form">
+				<label for="email-modal-nome">Nome</label>
+				<input type="text" id="email-modal-nome" name="nome" required>
+
+				<label for="email-modal-email">Seu e-mail</label>
+				<input type="email" id="email-modal-email" name="email" required>
+
+				<label for="email-modal-mensagem">Mensagem</label>
+				<textarea id="email-modal-mensagem" name="mensagem" rows="4">Olá, gostaria de marcar uma aula experimental de violão!</textarea>
+
+				<button type="submit" class="cta-button email-modal-enviar">Enviar E-mail</button>
+			</form>
+		</div>
+	</div>
+
 
 	</footer>
     <script>
-  // Monitora o primeiro botão (cta-button)
-  var btnCta = document.getElementById('btn-whatsapp');
-  if(btnCta) {
-    btnCta.addEventListener('click', function() {
+  // Monitora todos os botões principais de WhatsApp (antes usava id duplicado e só contava o 1º clique)
+  document.querySelectorAll('.js-whatsapp-cta').forEach(function(btn) {
+    btn.addEventListener('click', function() {
       gtag('event', 'clique_whatsapp', {
         'event_category': 'Contato',
         'event_label': 'Botao Principal Violao',
         'transport_type': 'beacon'
       });
+    });
+  });
+
+  // Formulário de contato por e-mail (modal)
+  var emailOverlay = document.getElementById('email-modal-overlay');
+  var emailForm = document.getElementById('email-modal-form');
+  var emailFechar = document.getElementById('email-modal-fechar');
+  var emailContextoAtual = 'principal';
+  var EMAIL_DESTINO = 'luisabranches.violao@gmail.com';
+
+  function abrirModalEmail(contexto) {
+    emailContextoAtual = contexto;
+    emailOverlay.classList.add('is-aberto');
+    document.getElementById('email-modal-nome').focus();
+  }
+
+  function fecharModalEmail() {
+    emailOverlay.classList.remove('is-aberto');
+  }
+
+  document.querySelectorAll('.js-open-email-form').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      abrirModalEmail(btn.getAttribute('data-context') || 'principal');
+    });
+  });
+
+  if (emailFechar) {
+    emailFechar.addEventListener('click', fecharModalEmail);
+  }
+  if (emailOverlay) {
+    emailOverlay.addEventListener('click', function(evento) {
+      if (evento.target === emailOverlay) fecharModalEmail();
+    });
+  }
+  document.addEventListener('keydown', function(evento) {
+    if (evento.key === 'Escape') fecharModalEmail();
+  });
+
+  if (emailForm) {
+    emailForm.addEventListener('submit', function(evento) {
+      evento.preventDefault();
+
+      var nome = document.getElementById('email-modal-nome').value;
+      var emailVisitante = document.getElementById('email-modal-email').value;
+      var mensagem = document.getElementById('email-modal-mensagem').value;
+
+      var assunto = 'Aula Experimental de Violão - Contato pelo site';
+      var corpo = 'Nome: ' + nome + '\n' +
+                  'E-mail para retorno: ' + emailVisitante + '\n\n' +
+                  mensagem;
+
+      var linkMailto = 'mailto:' + EMAIL_DESTINO +
+        '?subject=' + encodeURIComponent(assunto) +
+        '&body=' + encodeURIComponent(corpo);
+
+      var eventoNome = (emailContextoAtual === 'flutuante') ? 'clique_email_flut' : 'clique_email';
+      var eventoLabel = (emailContextoAtual === 'flutuante') ? 'Formulario Email Flutuante' : 'Formulario Email Principal';
+
+      gtag('event', eventoNome, {
+        'event_category': 'Contato',
+        'event_label': eventoLabel,
+        'transport_type': 'beacon'
+      });
+
+      window.location.href = linkMailto;
+      fecharModalEmail();
+      emailForm.reset();
     });
   }
 
