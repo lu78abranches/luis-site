@@ -1,0 +1,927 @@
+html, body 
+{ 
+ height: 100%;
+ overflow-x: hidden;
+ 
+}
+
+body {
+	font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 20px;
+			margin: 0;
+			
+}
+
+iframe {
+	width: 100%; /* Ajuste conforme necessário */
+	max-width: 1080px; /* Defina a largura máxima do vídeo */
+	height: auto; /* Para manter a proporção do vídeo */
+	margin-bottom: 20px;
+}
+
+.div-video {
+	margin: 0 auto;
+	margin-bottom: 20px;
+
+ }
+
+
+
+/* reel insta */
+
+.instagram-media-container {
+	width: 100%;
+	max-width: 500px; /* Defina a largura máxima do Reel */
+	height: 0;
+	padding-bottom: 150.25%; /* Proporção 16:9 para o vídeo */
+	position: relative;
+	margin: 0 auto; /* Centraliza o Reel na página */
+}
+
+.instagram-media {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.cta-button {
+    display: block; /* Define como bloco para centralizar horizontalmente */
+    width: 200px; /* Largura do botão */
+    margin: 0 auto; /* Centraliza horizontalmente */
+	margin-bottom: 25px;
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 7px 7px; /* Espaçamento interno */
+    background-color: #007bff; /* Cor de fundo */
+    color: #ffffff; /* Cor do texto */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Arredondamento dos cantos */
+    text-decoration: none; /* Remove o sublinhado */
+}
+.cta-button:hover {
+	background-color: #cc5500;
+}
+
+
+header {
+	padding: 35px 20px;
+	text-align: left;
+
+}
+
+
+
+.caixa {
+    text-align: center; /* Alinha o conteúdo ao centro */
+  }
+  .logo-aula {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura da div pai */
+    height: auto; /* Mantém a proporção da imagem */
+  }
+nav {
+	position: absolute;
+	top: 110px;
+	right: 0;
+
+}
+
+nav li {
+	display: block;
+	margin: 0 0 0 15px;
+	text-align: left;
+	line-height: 2.5;
+
+}
+
+nav a {
+	text-transform: uppercase;
+	color: #000000;
+	font-weight: bold;
+	font-size: 25px;
+	text-decoration: none;
+}
+
+
+
+nav a :hover {
+	color: #C78C19;
+	text-decoration: underline;
+}
+
+.banner {
+	width: 100%;
+}
+
+main {
+	background: linear-gradient(#FEFEFE, #888888);
+
+}
+
+
+.titulo-principal {
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	margin: 0 0 1em;
+ 	clear: left;
+ 	line-height: 1.5;
+}
+
+  .paragrafo {
+	font-size: 20px;
+	padding: 30px 0;
+ 	width: 1440px;;
+ 	line-height: 1.5;
+	 max-width: 600px;
+	 margin: 0 auto;
+}
+
+.paragrafo strong {
+	font-weight: bold;
+}
+
+.logo-aula {
+	width: 750px;
+}
+
+.logo2{
+	width: 280px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+
+
+}
+
+.logo2:hover {
+	opacity: 0.3;
+	transition: 400ms;
+}
+
+.principal {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
+.p-metodo {
+
+	margin-bottom: 40px;
+}
+
+.imagem-metodo {
+	width: 250px;
+ 	box-shadow: 10px 10px 10px 0 #000000;
+ 	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;:  
+}
+
+.imagem-metodo:hover {
+	opacity: 0.3;
+	transition: 400ms;
+}
+
+.sobreprofessor {
+	display: inline-block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+	margin-bottom: 30px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+  th:first-child, td:first-child {
+    border-left: 1px solid #ddd;
+  }
+  th:last-child, td:last-child {
+    border-right: 1px solid #ddd;
+  }
+
+  li {
+	list-style-type: none;
+  }
+
+  .tabela-formato {
+	background-color: crimson;
+  }
+
+  .table-wrapper{
+	overflow-x: auto;
+  }
+
+  .check {
+    content: '\2714'; /* código Unicode para o símbolo de check */
+        color: white;
+        background-color: green; /* cor de fundo do círculo */
+        border-radius: 50%; /* torna o 'v' circular */
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        display: inline-block;
+        margin-right: 5px; /* espaço entre o 'v' e o círculo */
+}
+
+
+
+
+footer {
+	text-align: center;
+	
+	padding: 100px 0;
+	color: black;
+
+
+}
+
+footer img {
+ 	width: 280px;
+ 	padding: 50px 0 ;
+
+
+
+ }
+
+ /* CSS do video.html*/
+
+
+
+/* botão Whatsapp */
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+/* CSS do plano.html*/
+
+ table {
+ 	margin: 20px 0 40px;
+ }
+
+ thead {
+ 	background: #555555;
+ 	color: white;
+ 	font-weight: bold;
+ }
+
+ td, th {
+ 	border: 1px solid #000000;
+ 	padding: 15px 12px;
+ 	text-align: center;
+
+ }
+
+
+ .imagem-depoimento {
+    max-width: 65%; /* Tamanho máximo da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Exibe a imagem como bloco para centralizar */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    border: 1px solid #dcdcdc; /* Borda sólida */
+    border-radius: 10px; /* Raio do arredondamento da borda */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+	margin-bottom: 70px;
+	
+	
+}
+
+/* Consulta de mídia para ajustar o tamanho da imagem em telas menores */
+@media screen and (max-width: 768px) {
+    .imagem-depoimento {
+        max-width: 100%; /* Altera o tamanho máximo da imagem para ocupar toda a largura da tela em telas menores */
+    }
+
+	.cta-button {
+        width: 100%; /* Define a largura do botão para ocupar toda a largura da tela em telas menores */
+    }
+}
+
+ .container {max-width: 700px;}
+
+ .div-video{
+ 	
+ 	width: 100%;
+	margin: 0 auto;
+ 	padding-top: 56.26%;
+ 	position: relative;
+	margin-bottom: 20px;
+
+
+ }
+
+.div-video iframe{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	border-radius: 10px;
+	
+	
+
+}
+
+
+ /* CSS contato.html*/
+
+ form {
+ 	margin: 40px 0 0 45px;
+ 	max-width: 760px;
+ 	width: calc(100% - 45px);
+ }
+
+ form label, form legend {
+ 	display: block;
+ 	font-size: 20px;
+ 	margin-left: auto;
+     margin-right: auto;
+ 	line-height: 1.5;
+ }
+
+ .input-padrao {
+ 	display: block;
+ 	margin: 0 0 30px;
+ 	padding: 10px 25px 20px;
+ 	width: 100%;
+ 	max-width: 100%;
+ 	box-sizing: border-box;
+ }
+
+ .checkbox {
+ 	margin: 20px 0;
+ }
+
+ .enviar {
+ 	width: 100%;
+ 	max-width: 320px;
+ 	padding: 15px 0 15px 10px;
+ 	background: orange;
+ 	color: white;
+ 	font-weight: bold;
+ 	font-size: 20px;
+ 	border: none;
+ 	border-radius: 5px;
+ 	transition: transform 0.3s ease, background 0.3s ease;
+ 	cursor: pointer;
+ }
+
+ .enviar:hover {
+ 	background: darkorange;
+ 	transform: scale(1.05);
+ }
+
+ .float-email {
+ 	position: fixed;
+ 	width: 60px;
+ 	height: 60px;
+ 	bottom: 112px;
+ 	right: 40px;
+ 	background-color: #007bff;
+ 	color: #FFF;
+ 	border-radius: 50px;
+ 	text-align: center;
+ 	font-size: 24px;
+ 	line-height: 60px;
+ 	box-shadow: 2px 2px 3px #999;
+ 	z-index: 101;
+ 	display: inline-flex;
+ 	align-items: center;
+ 	justify-content: center;
+ 	cursor: pointer;
+ }
+
+
+ .email-modal h3 {
+ 	margin-top: 0;
+ 	color: #007bff;
+ }
+
+ .email-modal p {
+ 	font-size: 14px;
+ 	color: #555;
+ }
+
+ .email-modal-fechar {
+ 	position: absolute;
+ 	top: 10px;
+ 	right: 15px;
+ 	background: none;
+ 	border: none;
+ 	font-size: 28px;
+ 	line-height: 1;
+ 	cursor: pointer;
+ 	color: #999;
+ }
+
+ .email-modal-fechar:hover {
+ 	color: #333;
+ }
+
+ .email-modal form {
+ 	display: flex;
+ 	flex-direction: column;
+ 	text-align: left;
+ 	width: 100%;
+ }
+
+ .email-modal label {
+ 	font-size: 13px;
+ 	font-weight: bold;
+ 	margin: 10px 0 4px;
+ 	color: #333;
+ }
+
+ .email-modal input,
+ .email-modal textarea {
+ 	padding: 10px;
+ 	border: 1px solid #ccc;
+ 	border-radius: 5px;
+ 	font-size: 14px;
+ 	font-family: inherit;
+ 	resize: vertical;
+ 	width: 100%;
+ 	box-sizing: border-box;
+ }
+
+ .email-modal-enviar {
+ 	width: 100%;
+ 	margin-top: 18px;
+ 	cursor: pointer;
+ 	border: none;
+ 	background-color: #007bff;
+ 	color: #fff;
+ 	padding: 14px 16px;
+ 	border-radius: 8px;
+ 	font-size: 16px;
+ 	font-weight: bold;
+ 	transition: background 0.3s ease, transform 0.3s ease;
+ }
+
+ .email-modal-enviar:hover {
+ 	background-color: #0056b3;
+ 	transform: translateY(-1px);
+ }
+
+ /*CSS quiz.html */
+
+ .chutar {
+ 	display: block;
+ 	width: 15%;
+ 	padding: 15px 0 15px 10px;
+ 	background: green;
+ 	color: white;
+ 	font-weight: bold;
+ 	font-size: 20px;
+ 	border: none;
+ 	cursor: pointer;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+ 	transition: 1s all;
+ 	cursor: pointer;
+ }
+
+.input-notas {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+ 	padding: 10px 25px 20px;
+ 	width: 34%;
+ 	font-size: 20px;
+ 	text-align: center;
+
+
+}
+
+.page-logo {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 25%;
+
+}
+
+.page-logo3 {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 12%;
+
+}
+
+.page-logo4 {
+	display: block;
+ 	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 16%;
+}
+
+
+.resultado, .resultado2, .resultado3, .resultado4 {
+  color: darkorange;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  font-size: 35px;
+  font-weight: bold;
+
+}
+
+/* Miniatura clicavel dos videos do YouTube (carregamento sob demanda) */
+
+.yt-facade {
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.yt-facade-thumb {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 10px;
+}
+
+.yt-facade-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 68px;
+	height: 48px;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #ffffff;
+	border: none;
+	border-radius: 12px;
+	font-size: 22px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.yt-facade:hover .yt-facade-play {
+	background-color: #ff0000;
+	transition: 300ms;
+}
+
+/* Cards responsivos dos formatos de aula (substitui a tabela antiga) */
+
+.formatos-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 20px;
+	max-width: 1100px;
+	margin: 20px auto 30px;
+}
+
+.formato-card {
+	background-color: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+	text-align: center;
+}
+
+.formato-titulo {
+	background-color: crimson;
+	color: #ffffff;
+	margin: -20px -20px 15px;
+	padding: 12px 10px;
+	border-radius: 10px 10px 0 0;
+	font-size: 18px;
+}
+
+.formato-card p {
+	font-size: 15px;
+	margin: 0 0 10px;
+}
+
+.formato-preco {
+	font-weight: bold;
+	color: #007bff;
+	margin-top: 15px !important;
+}
+
+/* Cards do metodo de ensino (substitui as tabelas antigas de iniciante/intermediario) */
+
+.metodo-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
+	max-width: 1100px;
+	margin: 20px auto 30px;
+	text-align: left;
+}
+
+.metodo-card {
+	background-color: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+.metodo-card-titulo {
+	background-color: #007bff;
+	color: #ffffff;
+	margin: -20px -20px 15px;
+	padding: 12px 15px;
+	border-radius: 10px 10px 0 0;
+	font-size: 18px;
+	text-align: center;
+}
+
+.metodo-card ul {
+	margin: 0;
+	padding: 0;
+}
+
+.metodo-card li {
+	margin-bottom: 12px;
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+/* Botão secundário de contato por e-mail (ao lado do botão de WhatsApp) */
+
+.cta-button-secondary {
+	display: block;
+	width: 200px;
+	margin: 0 auto;
+	margin-bottom: 25px;
+	text-align: center;
+	padding: 7px 7px;
+	background-color: #ffffff;
+	color: #007bff;
+	border: 2px solid #007bff;
+	border-radius: 5px;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: inherit;
+}
+
+.cta-button-secondary:hover {
+	background-color: #007bff;
+	color: #ffffff;
+}
+
+/* Modal do formulário de contato por e-mail */
+
+.email-modal-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 200;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+
+.email-modal-overlay.is-aberto {
+	display: flex;
+}
+
+.email-modal {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 30px;
+	width: 90%;
+	max-width: 420px;
+	position: relative;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	max-height: calc(100vh - 60px);
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+
+.email-modal-fechar {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	background: none;
+	border: none;
+	font-size: 28px;
+	line-height: 1;
+	cursor: pointer;
+	color: #999;
+}
+
+.email-modal-fechar:hover {
+	color: #333;
+}
+
+.email-modal form {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.email-modal label {
+	font-size: 13px;
+	font-weight: bold;
+	margin: 10px 0 4px;
+	color: #333;
+}
+
+.email-modal input,
+.email-modal textarea {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	font-family: inherit;
+	resize: vertical;
+ 	width: 100%;
+ 	box-sizing: border-box;
+ }
+
+ .email-modal-enviar {
+ 	width: 100%;
+ 	margin-top: 18px;
+ 	cursor: pointer;
+ 	border: none;
+ 	background-color: #007bff;
+ 	color: white;
+ 	padding: 14px 16px;
+ 	border-radius: 8px;
+ 	font-size: 16px;
+ 	font-weight: bold;
+ 	transition: background 0.3s ease, transform 0.3s ease;
+ }
+
+ .email-modal-enviar:hover {
+ 	background-color: #0056b3;
+ 	transform: translateY(-1px);
+ }
+
+ /*CSS quiz.html */
+.enviar {
+	width: 80%;
+}
+
+.input-notas {
+	width: 70%;
+	font-size: 12px;
+	text-align: center;
+}
+
+.chutar, .page-logo3, .page-logo4 {
+	width: 40%;
+}
+
+.page-logo {
+	width: 60%;
+}
+
+footer img {
+	width: 150px;
+	padding: 50px 0;
+}
+
+.div-video {
+	margin: 0 auto;
+}
+
+.div-video iframe {
+	left: 0px;
+}
+
+@media screen and (max-width: 520px) {
+  h1 img, p, .principal, .banner, .conteudo-beneficios, .mapa-conteudo, .p-metodo, .paragrafo {
+    width: auto;
+    font-size: clamp(1.75em, 1em, 3vw, 2.5em);
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+
+  h1 img, nav {
+    width: 75%;
+    font-size: clamp(1.75em, 1em, 3vw, 2.5em);
+  }
+
+  .banner {
+    width: 100%;
+  }
+
+  .logo2 {
+    width: 180px;
+  }
+
+  .float,
+  .float-email {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    line-height: 52px;
+  }
+
+  .float-email {
+    bottom: 84px;
+  }
+
+  .enviar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .input-padrao {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+
+  .email-modal {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px;
+    margin: 0 8px;
+    max-height: calc(100vh - 48px);
+  }
+
+  .email-modal input,
+  .email-modal textarea {
+    font-size: 16px;
+  }
+
+  .email-modal-enviar {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .input-notas {
+    width: 70%;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .chutar, .page-logo3, .page-logo4 {
+    width: 40%;
+  }
+
+  .page-logo {
+    width: 60%;
+  }
+
+  footer img {
+    width: 150px;
+    padding: 50px 0;
+  }
+
+  .div-video {
+    margin: 0 auto;
+  }
+
+  .div-video iframe {
+    left: 0px;
+  }
+}

@@ -17,8 +17,8 @@
 	<title>Aulas de Violão em São Paulo | Luis Abranches - Professor há mais de 20 anos</title>
 	<meta name="description" content="Aulas de violão e guitarra em São Paulo com Luis Abranches, professor formado pela EMESP com mais de 20 anos de experiência. Aulas presenciais, online, individuais ou em dupla. Marque uma aula experimental.">
 	<link rel="canonical" href="https://luisabranches.com/aulasviolao/">
-	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="reset.css?v=20260731">
+	<link rel="stylesheet" href="style.css?v=20260731">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
@@ -428,6 +428,7 @@
     emailContextoAtual = contexto;
     emailPrevActive = document.activeElement;
     emailOverlay.classList.add('is-aberto');
+    document.body.classList.add('modal-aberto');
     emailOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     document.getElementById('email-modal-nome').focus();
@@ -435,6 +436,7 @@
 
   function fecharModalEmail() {
     emailOverlay.classList.remove('is-aberto');
+    document.body.classList.remove('modal-aberto');
     emailOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     if (emailPrevActive && typeof emailPrevActive.focus === 'function') {
