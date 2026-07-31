@@ -13,12 +13,13 @@
 	  gtag('config', 'AW-980758058'); // Ativa o Google Ads na mesma tag
 	</script>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Aulas de Violão em São Paulo | Luis Abranches - Professor há mais de 20 anos</title>
 	<meta name="description" content="Aulas de violão e guitarra em São Paulo com Luis Abranches, professor formado pela EMESP com mais de 20 anos de experiência. Aulas presenciais, online, individuais ou em dupla. Marque uma aula experimental.">
 	<link rel="canonical" href="https://luisabranches.com/aulasviolao/">
 	<link rel="stylesheet" href="reset.css">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
 	<!-- Dados estruturados para o Google (schema.org). TODO: preencher "price" com o valor real assim que definido. -->
@@ -372,19 +373,19 @@
 	<footer>
 		<img class="imagem-roda" src="logo-pb.png" alt="Logo Aulas de Violão">
 		<p class="copyright">&copy; Copyright <strong>Violão Luis Abranches - 2026</strong></p>
+	</footer>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="float" target="_blank" id="btn-whatsapp-flutuante" aria-label="Marcar aula experimental pelo WhatsApp">
-	<i class="fa fa-whatsapp my-float"></i>
-</a>
+	<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="float" target="_blank" rel="noopener noreferrer" id="btn-whatsapp-flutuante" aria-label="Marcar aula experimental pelo WhatsApp">
+		<i class="fa fa-whatsapp my-float"></i>
+	</a>
 
 	<button type="button" class="float float-email js-open-email-form" data-context="flutuante" aria-label="Marcar aula experimental por e-mail">
-	<i class="fa fa-envelope my-float"></i>
-</button>
+		<i class="fa fa-envelope my-float"></i>
+	</button>
 
 	<!-- Modal do formulário de contato por e-mail -->
-	<div class="email-modal-overlay" id="email-modal-overlay">
-		<div class="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-titulo">
+	<div class="email-modal-overlay" id="email-modal-overlay" aria-hidden="true">
+		<div class="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-titulo" tabindex="-1">
 			<button type="button" class="email-modal-fechar" id="email-modal-fechar" aria-label="Fechar formulário">&times;</button>
 			<h3 id="email-modal-titulo">Marcar aula por e-mail</h3>
 			<p>Preencha seus dados abaixo. Vamos abrir seu aplicativo de e-mail com a mensagem já pronta para enviar.</p>
@@ -403,8 +404,6 @@
 		</div>
 	</div>
 
-
-	</footer>
     <script>
   // Monitora todos os botões principais de WhatsApp (antes usava id duplicado e só contava o 1º clique)
   document.querySelectorAll('.js-whatsapp-cta').forEach(function(btn) {
@@ -423,15 +422,24 @@
   var emailFechar = document.getElementById('email-modal-fechar');
   var emailContextoAtual = 'principal';
   var EMAIL_DESTINO = 'luisabranches.violao@gmail.com';
+  var emailPrevActive = null;
 
   function abrirModalEmail(contexto) {
     emailContextoAtual = contexto;
+    emailPrevActive = document.activeElement;
     emailOverlay.classList.add('is-aberto');
+    emailOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
     document.getElementById('email-modal-nome').focus();
   }
 
   function fecharModalEmail() {
     emailOverlay.classList.remove('is-aberto');
+    emailOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (emailPrevActive && typeof emailPrevActive.focus === 'function') {
+      emailPrevActive.focus();
+    }
   }
 
   document.querySelectorAll('.js-open-email-form').forEach(function(btn) {
@@ -449,7 +457,9 @@
     });
   }
   document.addEventListener('keydown', function(evento) {
-    if (evento.key === 'Escape') fecharModalEmail();
+    if (evento.key === 'Escape' && emailOverlay.classList.contains('is-aberto')) {
+      fecharModalEmail();
+    }
   });
 
   if (emailForm) {

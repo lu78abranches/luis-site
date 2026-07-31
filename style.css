@@ -360,14 +360,15 @@ footer img {
 
  form {
  	margin: 40px 0 0 45px;
- 	width: center;
+ 	max-width: 760px;
+ 	width: calc(100% - 45px);
  }
 
  form label, form legend {
  	display: block;
  	font-size: 20px;
  	margin-left: auto;
-    margin-right: auto;
+     margin-right: auto;
  	line-height: 1.5;
  }
 
@@ -375,7 +376,9 @@ footer img {
  	display: block;
  	margin: 0 0 30px;
  	padding: 10px 25px 20px;
- 	width: 50%;
+ 	width: 100%;
+ 	max-width: 100%;
+ 	box-sizing: border-box;
  }
 
  .checkbox {
@@ -383,7 +386,8 @@ footer img {
  }
 
  .enviar {
- 	width: 40%;
+ 	width: 100%;
+ 	max-width: 320px;
  	padding: 15px 0 15px 10px;
  	background: orange;
  	color: white;
@@ -391,14 +395,105 @@ footer img {
  	font-size: 20px;
  	border: none;
  	border-radius: 5px;
- 	transition: 1s all;
+ 	transition: transform 0.3s ease, background 0.3s ease;
  	cursor: pointer;
  }
 
  .enviar:hover {
  	background: darkorange;
- 	transform: scale(1.2);
+ 	transform: scale(1.05);
+ }
 
+ .float-email {
+ 	position: fixed;
+ 	width: 60px;
+ 	height: 60px;
+ 	bottom: 112px;
+ 	right: 40px;
+ 	background-color: #007bff;
+ 	color: #FFF;
+ 	border-radius: 50px;
+ 	text-align: center;
+ 	font-size: 24px;
+ 	line-height: 60px;
+ 	box-shadow: 2px 2px 3px #999;
+ 	z-index: 101;
+ 	display: inline-flex;
+ 	align-items: center;
+ 	justify-content: center;
+ 	cursor: pointer;
+ }
+
+
+ .email-modal h3 {
+ 	margin-top: 0;
+ 	color: #007bff;
+ }
+
+ .email-modal p {
+ 	font-size: 14px;
+ 	color: #555;
+ }
+
+ .email-modal-fechar {
+ 	position: absolute;
+ 	top: 10px;
+ 	right: 15px;
+ 	background: none;
+ 	border: none;
+ 	font-size: 28px;
+ 	line-height: 1;
+ 	cursor: pointer;
+ 	color: #999;
+ }
+
+ .email-modal-fechar:hover {
+ 	color: #333;
+ }
+
+ .email-modal form {
+ 	display: flex;
+ 	flex-direction: column;
+ 	text-align: left;
+ 	width: 100%;
+ }
+
+ .email-modal label {
+ 	font-size: 13px;
+ 	font-weight: bold;
+ 	margin: 10px 0 4px;
+ 	color: #333;
+ }
+
+ .email-modal input,
+ .email-modal textarea {
+ 	padding: 10px;
+ 	border: 1px solid #ccc;
+ 	border-radius: 5px;
+ 	font-size: 14px;
+ 	font-family: inherit;
+ 	resize: vertical;
+ 	width: 100%;
+ 	box-sizing: border-box;
+ }
+
+ .email-modal-enviar {
+ 	width: 100%;
+ 	margin-top: 18px;
+ 	cursor: pointer;
+ 	border: none;
+ 	background-color: #007bff;
+ 	color: #fff;
+ 	padding: 14px 16px;
+ 	border-radius: 8px;
+ 	font-size: 16px;
+ 	font-weight: bold;
+ 	transition: background 0.3s ease, transform 0.3s ease;
+ }
+
+ .email-modal-enviar:hover {
+ 	background-color: #0056b3;
+ 	transform: translateY(-1px);
  }
 
  /*CSS quiz.html */
@@ -418,8 +513,6 @@ footer img {
     margin-bottom: 40px;
  	transition: 1s all;
  	cursor: pointer;
- 	
-
  }
 
 .input-notas {
@@ -612,18 +705,6 @@ footer img {
 	color: #ffffff;
 }
 
-/* Botão flutuante de e-mail (ao lado do flutuante de WhatsApp) */
-
-.float-email {
-	bottom: 112px;
-	right: 40px;
-	background-color: #007bff;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	font-family: inherit;
-}
-
 /* Modal do formulário de contato por e-mail */
 
 .email-modal-overlay {
@@ -637,6 +718,9 @@ footer img {
 	z-index: 200;
 	align-items: center;
 	justify-content: center;
+	padding: 20px;
+	box-sizing: border-box;
+	overflow-y: auto;
 }
 
 .email-modal-overlay.is-aberto {
@@ -651,16 +735,9 @@ footer img {
 	max-width: 420px;
 	position: relative;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.email-modal h3 {
-	margin-top: 0;
-	color: #007bff;
-}
-
-.email-modal p {
-	font-size: 14px;
-	color: #555;
+	max-height: calc(100vh - 60px);
+	overflow-y: auto;
+	box-sizing: border-box;
 }
 
 .email-modal-fechar {
@@ -700,93 +777,151 @@ footer img {
 	font-size: 14px;
 	font-family: inherit;
 	resize: vertical;
+ 	width: 100%;
+ 	box-sizing: border-box;
+ }
+
+ .email-modal-enviar {
+ 	width: 100%;
+ 	margin-top: 18px;
+ 	cursor: pointer;
+ 	border: none;
+ 	background-color: #007bff;
+ 	color: white;
+ 	padding: 14px 16px;
+ 	border-radius: 8px;
+ 	font-size: 16px;
+ 	font-weight: bold;
+ 	transition: background 0.3s ease, transform 0.3s ease;
+ }
+
+ .email-modal-enviar:hover {
+ 	background-color: #0056b3;
+ 	transform: translateY(-1px);
+ }
+
+ /*CSS quiz.html */
+.enviar {
+	width: 80%;
 }
-
-.email-modal-enviar {
-	width: 100%;
-	margin-top: 18px;
-	cursor: pointer;
-	border: none;
-}
-
-/* codigo para Responsivo */
-
-@media screen and (max-width: 520px) {
-
-   h1 img, p, .principal, .banner, .conteudo-beneficios, .mapa-conteudo, .p-metodo, .paragrafo {
-        width: auto;
-        font-size: clamp(1.75em, 1em, 3vw, 2.5em)
-		
-		
-        
-   }
-
-   .container{
-	margin: 0 auto;
-   }
-   
-
-  h1 img, nav  {
-  	width: 75%;
-  	 font-size: clamp(1.75em, 1em, 3vw, 2.5em)
-  	 flex-direction column;
-
-  }
-
-  
-
-  .banner {
-  	width: 100%;
-  }
-
-  .logo2 {
-  	width: 180px;
-  	
-  }
-
-  .float {
-  	bottom: 110px;
-
-  }
-
-  .enviar{
-  	width: 80%;
-  }
 
 .input-notas {
-
 	width: 70%;
 	font-size: 12px;
 	text-align: center;
 }
 
-.chutar,.page-logo3, .page-logo4 {
-
+.chutar, .page-logo3, .page-logo4 {
 	width: 40%;
 }
 
- .page-logo {
- 	width: 60%
- }
-
-footer img {
- 	width: 150px;
- 	padding: 50px 0 ;
- }
-
- .div-video {
-	margin: 0 auto;
- }
-
-  
-
-.div-video iframe{
-	
-	
-	left: 0px;
-	
-
+.page-logo {
+	width: 60%;
 }
 
- 
+footer img {
+	width: 150px;
+	padding: 50px 0;
+}
+
+.div-video {
+	margin: 0 auto;
+}
+
+.div-video iframe {
+	left: 0px;
+}
+
+@media screen and (max-width: 520px) {
+  h1 img, p, .principal, .banner, .conteudo-beneficios, .mapa-conteudo, .p-metodo, .paragrafo {
+    width: auto;
+    font-size: clamp(1.75em, 1em, 3vw, 2.5em);
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+
+  h1 img, nav {
+    width: 75%;
+    font-size: clamp(1.75em, 1em, 3vw, 2.5em);
+  }
+
+  .banner {
+    width: 100%;
+  }
+
+  .logo2 {
+    width: 180px;
+  }
+
+  .float,
+  .float-email {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    line-height: 52px;
+  }
+
+  .float-email {
+    bottom: 84px;
+  }
+
+  .enviar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .input-padrao {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+
+  .email-modal {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px;
+    margin: 0 8px;
+    max-height: calc(100vh - 48px);
+  }
+
+  .email-modal input,
+  .email-modal textarea {
+    font-size: 16px;
+  }
+
+  .email-modal-enviar {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .input-notas {
+    width: 70%;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .chutar, .page-logo3, .page-logo4 {
+    width: 40%;
+  }
+
+  .page-logo {
+    width: 60%;
+  }
+
+  footer img {
+    width: 150px;
+    padding: 50px 0;
+  }
+
+  .div-video {
+    margin: 0 auto;
+  }
+
+  .div-video iframe {
+    left: 0px;
+  }
 }
