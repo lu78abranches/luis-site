@@ -1,6 +1,38 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+// Do not display PHP errors in the HTTP response; always log them instead.
+ini_set('display_errors', '0');
+error_reporting(E_ALL);
+
+// Convert PHP errors into logged entries and prevent them from being displayed.
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+    error_log(sprintf("PHP error [%d] %s in %s on line %d", $errno, $errstr, $errfile, $errline));
+    return true; // mark as handled so PHP won't output it
+});
+
+// Handle uncaught exceptions: log and return a minimal JSON response.
+set_exception_handler(function ($e) {
+    error_log('Uncaught exception: ' . $e->getMessage());
+    if (!headers_sent()) {
+        header('Content-Type: application/json; charset=utf-8');
+    }
+    echo json_encode(['sucesso' => false, 'mensagem' => 'Ocorreu um erro interno.'], JSON_UNESCAPED_UNICODE);
+    exit;
+});
+
+// Catch fatal shutdown errors and log them (attempt to return JSON if possible).
+register_shutdown_function(function () {
+    $err = error_get_last();
+    if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        error_log('Fatal error: ' . json_encode($err));
+        if (!headers_sent()) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Ocorreu um erro interno.'], JSON_UNESCAPED_UNICODE);
+        }
+    }
+});
+
 function jsonResponse(bool $success, string $message): void {
     echo json_encode(['sucesso' => $success, 'mensagem' => $message], JSON_UNESCAPED_UNICODE);
     exit;
@@ -54,13 +86,17 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 } catch (PDOException $exception) {
+    error_log('Falha ao conectar ao banco de dados: ' . $exception->getMessage());
     $erroBanco = 'Erro ao conectar com o banco de dados.';
+    // keep technical details for internal notification only
+    $erroBancoDetalhes = $exception->getMessage();
     $pdo = null;
 }
 
 if (!isset($erroBanco)) {
     $erroBanco = null;
 }
+$erroBancoDetalhes = $erroBancoDetalhes ?? null;
 $salvoNoBanco = false;
 if ($pdo !== null) {
     try {
@@ -78,7 +114,10 @@ if ($pdo !== null) {
         ]);
         $salvoNoBanco = true;
     } catch (PDOException $exception) {
-        $erroBanco = $exception->getMessage();
+        error_log('Falha ao salvar lead no banco: ' . $exception->getMessage());
+        $erroBanco = 'Erro ao salvar lead no banco de dados.';
+        // keep technical details for internal notification only
+        $erroBancoDetalhes = $exception->getMessage();
     }
 }
 
@@ -117,6 +156,7 @@ function sendNotificationEmail(string $subject, string $bodyHtml, string $bodyTe
         $mail->send();
         return true;
     } catch (\Exception $e) {
+        error_log('PHPMailer error: ' . $e->getMessage());
         return false;
     }
 }
@@ -148,9 +188,15 @@ if ($erroBanco !== null) {
         '<li><strong>Canal:</strong> ' . htmlspecialchars($canal, ENT_QUOTES, 'UTF-8') . '</li>' .
         '<li><strong>Página de origem:</strong> ' . htmlspecialchars($pagina_origem, ENT_QUOTES, 'UTF-8') . '</li>' .
         '<li><strong>Mensagem:</strong><br>' . nl2br(htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8')) . '</li>' .
-        '<li><strong>Erro do banco:</strong> ' . htmlspecialchars($erroBanco, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Erro do banco (resumo):</strong> ' . htmlspecialchars($erroBanco, ENT_QUOTES, 'UTF-8') . '</li>' .
         '</ul>';
-    $avisoBodyText = "Falha ao salvar lead no banco de dados. Dados recebidos:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}\nErro do banco: {$erroBanco}";
+    // Append technical details to the internal notification only
+    if (!empty($erroBancoDetalhes)) {
+        $avisoBodyHtml .= '<h3>Detalhes técnicos</h3><pre style="white-space:pre-wrap;">' . htmlspecialchars($erroBancoDetalhes, ENT_QUOTES, 'UTF-8') . '</pre>';
+        $avisoBodyText = "Falha ao salvar lead no banco de dados. Dados recebidos:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}\nErro do banco: {$erroBanco}\nDetalhes técnicos: {$erroBancoDetalhes}";
+    } else {
+        $avisoBodyText = "Falha ao salvar lead no banco de dados. Dados recebidos:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}\nErro do banco: {$erroBanco}";
+    }
     $notificacaoDeErro = sendNotificationEmail('Falha ao salvar lead — dados abaixo', $avisoBodyHtml, $avisoBodyText, $nome, $email);
 }
 
@@ -171,6 +217,7 @@ function loadPHPMailer(): bool {
     foreach ($files as $file) {
         $path = $base . '/' . $file;
         if (!file_exists($path)) {
+            error_log('PHPMailer missing file: ' . $path);
             return false;
         }
         require_once $path;

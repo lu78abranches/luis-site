@@ -530,6 +530,14 @@
 						if (!mailWindow) {
 							window.location.href = mailto;
 						}
+						// Fire email analytics immediately when the user opens their mail client
+						if (typeof gtag === 'function') {
+							gtag('event', 'clique_email', {
+								'event_category': 'Lead',
+								'event_label': 'Email',
+								'transport_type': 'beacon'
+							});
+						}
 						setStatus('Abrindo seu cliente de e-mail. Envie a mensagem para concluir.', false);
 					} else {
 						setStatus('Enviando...', false);
@@ -569,16 +577,10 @@
               }
               setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
               sucesso = true;
-            } else if (data && data.mensagem_enviada) {
-              if (typeof gtag === 'function') {
-                gtag('event', 'conversion_lead', {
-                  'event_category': 'Lead',
-                  'event_label': 'Email',
-                  'transport_type': 'beacon'
-                });
-              }
-              setStatus('Lead registrado com sucesso. Entraremos em contato em breve.', false);
-              sucesso = true;
+						} else if (data && data.mensagem_enviada) {
+							// Server confirmed email notification sent; show success message.
+							setStatus('Lead registrado com sucesso. Entraremos em contato em breve.', false);
+							sucesso = true;
             } else if (data && data.sucesso) {
               setStatus(data.mensagem || 'Lead registrado com sucesso.', false);
               sucesso = true;
