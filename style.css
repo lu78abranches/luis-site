@@ -345,10 +345,18 @@ footer img {
   border-radius: 10px;
   font-size: 0.95rem;
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 .lead-widget-row textarea {
   resize: vertical;
+  min-height: 72px;
+}
+
+.lead-widget-inner,
+.lead-widget-row input,
+.lead-widget-row textarea {
+  box-sizing: border-box;
 }
 
 .lead-widget-consent {

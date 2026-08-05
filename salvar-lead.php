@@ -57,6 +57,8 @@ try {
     jsonResponse(false, 'Erro ao conectar com o banco de dados.');
 }
 
+$salvoNoBanco = false;
+$erroBanco = null;
 try {
     $stmt = $pdo->prepare(
         'INSERT INTO leads (nome, telefone, email, mensagem, canal, pagina_origem, consentimento_lgpd) VALUES (:nome, :telefone, :email, :mensagem, :canal, :pagina_origem, :consentimento_lgpd)'
@@ -70,9 +72,51 @@ try {
         ':pagina_origem' => $pagina_origem !== '' ? $pagina_origem : null,
         ':consentimento_lgpd' => $consentimentoLGPD ? 1 : 0,
     ]);
+    $salvoNoBanco = true;
 } catch (PDOException $exception) {
-    jsonResponse(false, 'Erro ao salvar o lead.');
+    $erroBanco = $exception->getMessage();
 }
+
+function sendNotificationEmail(string $subject, string $bodyHtml, string $bodyText, string $replyName = '', string $replyEmail = ''): bool {
+    if (!loadPHPMailer()) {
+        return false;
+    }
+
+    $smtpHost = 'smtp.hostinger.com';
+    $smtpUser = 'seuusuario@seudominio.com';
+    $smtpPass = 'SUA_SENHA_SMTP';
+    $smtpPort = 587;
+    $smtpSecure = 'tls';
+    $destino = 'luisabranches.violao@gmail.com';
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = $smtpHost;
+        $mail->SMTPAuth = true;
+        $mail->Username = $smtpUser;
+        $mail->Password = $smtpPass;
+        $mail->SMTPSecure = $smtpSecure;
+        $mail->Port = $smtpPort;
+        $mail->CharSet = 'UTF-8';
+
+        $mail->setFrom($smtpUser, 'Contato Aulas de Violão');
+        $mail->addAddress($destino, 'Luis Abranches');
+        if ($replyEmail !== '') {
+            $mail->addReplyTo($replyEmail, $replyName ?: 'Contato');
+        }
+        $mail->Subject = $subject;
+        $mail->isHTML(true);
+        $mail->Body = $bodyHtml;
+        $mail->AltBody = $bodyText;
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+$mensagemEnviada = false;
 
 if ($canal === 'email') {
     $smtpHost = 'smtp.hostinger.com';
@@ -123,7 +167,30 @@ if ($canal === 'email') {
     }
 }
 
-jsonResponse(true, 'Lead salvo com sucesso.');
+if (!$salvoNoBanco) {
+    $avisoBodyHtml = '<p>Falha ao salvar lead no banco de dados. Dados recebidos:</p>' .
+        '<ul>' .
+        '<li><strong>Nome:</strong> ' . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Telefone:</strong> ' . htmlspecialchars($telefone, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>E-mail:</strong> ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Canal:</strong> ' . htmlspecialchars($canal, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Página de origem:</strong> ' . htmlspecialchars($pagina_origem, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Mensagem:</strong><br>' . nl2br(htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8')) . '</li>' .
+        '<li><strong>Erro do banco:</strong> ' . htmlspecialchars($erroBanco, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '</ul>';
+    $avisoBodyText = "Falha ao salvar lead no banco de dados. Dados recebidos:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}\nErro do banco: {$erroBanco}";
+    sendNotificationEmail('Falha ao salvar lead — dados abaixo', $avisoBodyHtml, $avisoBodyText, $nome, $email);
+}
+
+$jsonData = [
+    'mensagem_enviada' => $mensagemEnviada,
+    'salvo_no_banco' => $salvoNoBanco,
+    'sucesso' => $mensagemEnviada || $salvoNoBanco,
+    'mensagem' => $salvoNoBanco ? 'Lead processado com sucesso.' : 'Lead não foi salvo no banco, mas seus dados foram processados.'
+];
+
+echo json_encode($jsonData, JSON_UNESCAPED_UNICODE);
+exit;
 
 function loadPHPMailer(): bool {
     $base = __DIR__ . '/vendor/phpmailer/phpmailer/src';
