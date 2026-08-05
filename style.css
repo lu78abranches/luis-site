@@ -264,26 +264,13 @@ footer img {
 
 .lead-widget {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: auto 0 0 0;
   width: 100%;
   z-index: 9999;
   display: flex;
   justify-content: center;
-  padding: 8px 12px 12px;
-  background: transparent;
+  padding: 0 12px 12px;
   pointer-events: none;
-}
-
-.lead-widget-inner {
-  width: min(100%, 430px);
-  max-width: 430px;
-  background: #ffffff;
-  border-radius: 18px 18px 0 0;
-  padding: 16px;
-  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.15);
-  pointer-events: auto;
 }
 
 .lead-widget-hidden {
@@ -295,8 +282,9 @@ footer img {
   max-width: 520px;
   background: #ffffff;
   border-radius: 18px 18px 0 0;
-  padding: 16px;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.16);
+  padding: 18px;
+  box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.16);
+  pointer-events: auto;
 }
 
 .lead-widget-form {

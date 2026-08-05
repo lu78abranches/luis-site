@@ -510,7 +510,10 @@
           payload.append('campo_extra', '');
 
           if (action === 'whatsapp') {
-            whatsappWindow = window.open('', whatsappPopupName);
+            whatsappWindow = window.open('about:blank', whatsappPopupName);
+            if (!whatsappWindow || whatsappWindow.closed) {
+              whatsappWindow = null;
+            }
           }
           setStatus('Enviando...', false);
 
@@ -538,7 +541,7 @@
                 if (whatsappWindow && !whatsappWindow.closed) {
                   whatsappWindow.location.href = url;
                 } else {
-                  window.open(url, whatsappPopupName);
+                  whatsappWindow = window.open(url, whatsappPopupName);
                 }
                 setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
               } else {
