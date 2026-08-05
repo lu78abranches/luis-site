@@ -375,7 +375,7 @@
 		<p class="copyright">&copy; Copyright <strong>Violão Luis Abranches - 2026</strong></p>
 	</footer>
 
-	<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="float" target="_blank" rel="noopener noreferrer" id="btn-whatsapp-flutuante" aria-label="Marcar aula experimental pelo WhatsApp">
+	<a href="https://api.whatsapp.com/send?phone=5511996332082&text=%20Olá, gostaria de marcar uma aula experimental!" class="float js-contact-trigger" target="_blank" rel="noopener noreferrer" id="btn-whatsapp-flutuante" data-canal="whatsapp" data-context="flutuante" aria-label="Marcar aula experimental pelo WhatsApp">
 		<i class="fa fa-whatsapp my-float"></i>
 	</a>
 
@@ -579,8 +579,6 @@
         if (window.location) {
           paginaOrigemInput.value = window.location.href;
         }
-
-        showWidget();
       })();
     </script>
 </body>
