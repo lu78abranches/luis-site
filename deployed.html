@@ -509,13 +509,31 @@
           payload.append('consentimento_lgpd', formFields.consentimento.checked ? 'true' : 'false');
           payload.append('campo_extra', '');
 
-          if (action === 'whatsapp') {
-            whatsappWindow = window.open('about:blank', whatsappPopupName);
-            if (!whatsappWindow || whatsappWindow.closed) {
-              whatsappWindow = null;
-            }
-          }
-          setStatus('Enviando...', false);
+					if (action === 'whatsapp') {
+						whatsappWindow = window.open('about:blank', whatsappPopupName);
+						if (!whatsappWindow || whatsappWindow.closed) {
+							whatsappWindow = null;
+						}
+					}
+
+					if (action === 'email') {
+						var subject = encodeURIComponent('Marcar Aula Experimental - Aulas de Violão');
+						var bodyParts = [];
+						var mensagemTexto = formFields.mensagem.value.trim();
+						if (mensagemTexto) bodyParts.push(mensagemTexto);
+						bodyParts.push('\nNome: ' + formFields.nome.value.trim());
+						if (formFields.telefone.value.trim()) bodyParts.push('Telefone: ' + formFields.telefone.value.trim());
+						bodyParts.push('Página de origem: ' + (paginaOrigemInput.value || window.location.href));
+						var body = encodeURIComponent(bodyParts.join('\n'));
+						var mailto = 'mailto:luisabranches.violao@gmail.com?subject=' + subject + '&body=' + body;
+						var mailWindow = window.open(mailto, 'luis_lead_widget_mail');
+						if (!mailWindow) {
+							window.location.href = mailto;
+						}
+						setStatus('Abrindo seu cliente de e-mail. Envie a mensagem para concluir.', false);
+					} else {
+						setStatus('Enviando...', false);
+					}
 
           fetch('salvar-lead.php', {
             method: 'POST',
