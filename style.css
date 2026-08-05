@@ -291,11 +291,17 @@ footer img {
 }
 
 .lead-widget-inner {
-  width: min(100%, 430px);
+  width: min(100%, 520px);
+  max-width: 520px;
   background: #ffffff;
   border-radius: 18px 18px 0 0;
   padding: 16px;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.lead-widget-form {
+  display: grid;
+  gap: 12px;
 }
 
 .lead-widget-header {

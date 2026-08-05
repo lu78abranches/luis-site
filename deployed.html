@@ -428,7 +428,6 @@
 
     <script>
       (function() {
-        var STORAGE_KEY_CLOSED = 'luis_lead_widget_closed';
         var leadWidget = document.getElementById('lead-widget');
         var leadForm = document.getElementById('lead-widget-form');
         var btnClose = document.getElementById('lead-widget-close');
@@ -437,6 +436,8 @@
         var paginaOrigemInput = document.getElementById('lead-widget-pagina_origem');
         var botaoAcoes = document.querySelectorAll('.lead-widget-action');
         var contatoTriggers = document.querySelectorAll('.js-contact-trigger');
+        var whatsappWindow = null;
+        var whatsappPopupName = 'luis_lead_widget_whatsapp';
         var formFields = {
           nome: document.getElementById('lead-nome'),
           telefone: document.getElementById('lead-telefone'),
@@ -458,10 +459,6 @@
 
         function showWidget() {
           if (!leadWidget) return;
-          if (sessionStorage.getItem(STORAGE_KEY_CLOSED) === '1') {
-            hideWidget();
-            return;
-          }
           leadWidget.classList.remove('lead-widget-hidden');
           leadWidget.setAttribute('aria-hidden', 'false');
         }
@@ -512,6 +509,9 @@
           payload.append('consentimento_lgpd', formFields.consentimento.checked ? 'true' : 'false');
           payload.append('campo_extra', '');
 
+          if (action === 'whatsapp') {
+            whatsappWindow = window.open('', whatsappPopupName);
+          }
           setStatus('Enviando...', false);
 
           fetch('salvar-lead.php', {
@@ -534,7 +534,12 @@
               if (action === 'whatsapp') {
                 var telefone = '5511996332082';
                 var mensagem = encodeURIComponent(formFields.mensagem.value.trim() || 'Olá, gostaria de marcar uma aula experimental de violão!');
-                window.open('https://wa.me/' + telefone + '?text=' + mensagem, '_blank');
+                var url = 'https://wa.me/' + telefone + '?text=' + mensagem;
+                if (whatsappWindow && !whatsappWindow.closed) {
+                  whatsappWindow.location.href = url;
+                } else {
+                  window.open(url, whatsappPopupName);
+                }
                 setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
               } else {
                 setStatus('Lead registrado com sucesso. Entraremos em contato em breve.', false);
@@ -571,7 +576,6 @@
 
         if (btnClose) {
           btnClose.addEventListener('click', function() {
-            sessionStorage.setItem(STORAGE_KEY_CLOSED, '1');
             hideWidget();
           });
         }
