@@ -54,27 +54,32 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 } catch (PDOException $exception) {
-    jsonResponse(false, 'Erro ao conectar com o banco de dados.');
+    $erroBanco = 'Erro ao conectar com o banco de dados.';
+    $pdo = null;
 }
 
+if (!isset($erroBanco)) {
+    $erroBanco = null;
+}
 $salvoNoBanco = false;
-$erroBanco = null;
-try {
-    $stmt = $pdo->prepare(
-        'INSERT INTO leads (nome, telefone, email, mensagem, canal, pagina_origem, consentimento_lgpd) VALUES (:nome, :telefone, :email, :mensagem, :canal, :pagina_origem, :consentimento_lgpd)'
-    );
-    $stmt->execute([
-        ':nome' => $nome,
-        ':telefone' => $telefone !== '' ? $telefone : null,
-        ':email' => $email !== '' ? $email : null,
-        ':mensagem' => $mensagem !== '' ? $mensagem : null,
-        ':canal' => $canal,
-        ':pagina_origem' => $pagina_origem !== '' ? $pagina_origem : null,
-        ':consentimento_lgpd' => $consentimentoLGPD ? 1 : 0,
-    ]);
-    $salvoNoBanco = true;
-} catch (PDOException $exception) {
-    $erroBanco = $exception->getMessage();
+if ($pdo !== null) {
+    try {
+        $stmt = $pdo->prepare(
+            'INSERT INTO leads (nome, telefone, email, mensagem, canal, pagina_origem, consentimento_lgpd) VALUES (:nome, :telefone, :email, :mensagem, :canal, :pagina_origem, :consentimento_lgpd)'
+        );
+        $stmt->execute([
+            ':nome' => $nome,
+            ':telefone' => $telefone !== '' ? $telefone : null,
+            ':email' => $email !== '' ? $email : null,
+            ':mensagem' => $mensagem !== '' ? $mensagem : null,
+            ':canal' => $canal,
+            ':pagina_origem' => $pagina_origem !== '' ? $pagina_origem : null,
+            ':consentimento_lgpd' => $consentimentoLGPD ? 1 : 0,
+        ]);
+        $salvoNoBanco = true;
+    } catch (PDOException $exception) {
+        $erroBanco = $exception->getMessage();
+    }
 }
 
 function sendNotificationEmail(string $subject, string $bodyHtml, string $bodyText, string $replyName = '', string $replyEmail = ''): bool {
@@ -134,7 +139,7 @@ if ($canal === 'email') {
     $mensagemEnviada = sendNotificationEmail($assunto, $bodyHtml, $bodyText, $nome, $email);
 }
 
-if (!$salvoNoBanco) {
+if ($erroBanco !== null) {
     $avisoBodyHtml = '<p>Falha ao salvar lead no banco de dados. Dados recebidos:</p>' .
         '<ul>' .
         '<li><strong>Nome:</strong> ' . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . '</li>' .
@@ -153,8 +158,8 @@ $jsonData = [
     'mensagem_enviada' => $mensagemEnviada,
     'salvo_no_banco' => $salvoNoBanco,
     'notificacao_erro' => $notificacaoDeErro,
-    'sucesso' => $mensagemEnviada || $salvoNoBanco || $notificacaoDeErro,
-    'mensagem' => $salvoNoBanco ? 'Lead processado com sucesso.' : 'Lead não foi salvo no banco, mas seus dados foram processados.'
+    'sucesso' => true,
+    'mensagem' => 'Sua solicitação foi recebida. Entraremos em contato em breve.'
 ];
 
 echo json_encode($jsonData, JSON_UNESCAPED_UNICODE);
