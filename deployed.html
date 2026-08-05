@@ -526,41 +526,72 @@
             return response.json();
           })
           .then(function(data) {
-            if (data && data.sucesso) {
+            var sucesso = false;
+            if (action === 'whatsapp') {
               if (typeof gtag === 'function') {
                 gtag('event', 'conversion_lead', {
                   'event_category': 'Lead',
-                  'event_label': canalInput.value === 'whatsapp' ? 'WhatsApp' : 'Email',
+                  'event_label': 'WhatsApp',
                   'transport_type': 'beacon'
                 });
               }
-              if (action === 'whatsapp') {
-                var telefone = '5511996332082';
-                var mensagem = encodeURIComponent(formFields.mensagem.value.trim() || 'Olá, gostaria de marcar uma aula experimental de violão!');
-                var url = 'https://wa.me/' + telefone + '?text=' + mensagem;
-                if (whatsappWindow && !whatsappWindow.closed) {
-                  whatsappWindow.location.href = url;
-                  whatsappWindow.focus();
-                } else {
-                  var popup = window.open(url, whatsappPopupName);
-                  if (!popup) {
-                    window.open(url, '_blank');
-                  } else {
-                    whatsappWindow = popup;
-                  }
-                }
-                setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
+              var telefone = '5511996332082';
+              var mensagem = encodeURIComponent(formFields.mensagem.value.trim() || 'Olá, gostaria de marcar uma aula experimental de violão!');
+              var url = 'https://wa.me/' + telefone + '?text=' + mensagem;
+              if (whatsappWindow && !whatsappWindow.closed) {
+                whatsappWindow.location.href = url;
+                whatsappWindow.focus();
               } else {
-                setStatus('Lead registrado com sucesso. Entraremos em contato em breve.', false);
+                var popup = window.open(url, whatsappPopupName);
+                if (!popup) {
+                  window.open(url, '_blank');
+                } else {
+                  whatsappWindow = popup;
+                }
               }
-              leadForm.reset();
-              canalInput.value = 'formulario';
+              setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
+              sucesso = true;
+            } else if (data && data.mensagem_enviada) {
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion_lead', {
+                  'event_category': 'Lead',
+                  'event_label': 'Email',
+                  'transport_type': 'beacon'
+                });
+              }
+              setStatus('Lead registrado com sucesso. Entraremos em contato em breve.', false);
+              sucesso = true;
+            } else if (data && data.sucesso) {
+              setStatus(data.mensagem || 'Lead registrado com sucesso.', false);
+              sucesso = true;
             } else {
               setStatus((data && data.mensagem) ? data.mensagem : 'Erro ao enviar. Tente novamente.', true);
             }
+            if (sucesso) {
+              leadForm.reset();
+              canalInput.value = 'formulario';
+            }
           })
           .catch(function() {
-            setStatus('Erro de rede. Verifique sua conexão e tente novamente.', true);
+            if (action === 'whatsapp') {
+              var telefone = '5511996332082';
+              var mensagem = encodeURIComponent(formFields.mensagem.value.trim() || 'Olá, gostaria de marcar uma aula experimental de violão!');
+              var url = 'https://wa.me/' + telefone + '?text=' + mensagem;
+              if (whatsappWindow && !whatsappWindow.closed) {
+                whatsappWindow.location.href = url;
+                whatsappWindow.focus();
+              } else {
+                var popup = window.open(url, whatsappPopupName);
+                if (!popup) {
+                  window.open(url, '_blank');
+                } else {
+                  whatsappWindow = popup;
+                }
+              }
+              setStatus('Não foi possível salvar o lead, mas estamos abrindo o WhatsApp.', false);
+            } else {
+              setStatus('Erro de rede. Verifique sua conexão e tente novamente.', true);
+            }
           });
         }
 

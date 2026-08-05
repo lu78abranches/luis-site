@@ -111,60 +111,27 @@ function sendNotificationEmail(string $subject, string $bodyHtml, string $bodyTe
         $mail->AltBody = $bodyText;
         $mail->send();
         return true;
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         return false;
     }
 }
 
 $mensagemEnviada = false;
+$notificacaoDeErro = false;
 
 if ($canal === 'email') {
-    $smtpHost = 'smtp.hostinger.com';
-    $smtpUser = 'seuusuario@seudominio.com';
-    $smtpPass = 'SUA_SENHA_SMTP';
-    $smtpPort = 587;
-    $smtpSecure = 'tls';
-    $destino = 'luisabranches.violao@gmail.com';
     $assunto = 'Novo lead por e-mail - Aulas de Violão';
-
-    if (!loadPHPMailer()) {
-        jsonResponse(false, 'PHPMailer não encontrado. Instale a biblioteca PHPMailer no servidor.');
-    }
-
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host = $smtpHost;
-        $mail->SMTPAuth = true;
-        $mail->Username = $smtpUser;
-        $mail->Password = $smtpPass;
-        $mail->SMTPSecure = $smtpSecure;
-        $mail->Port = $smtpPort;
-        $mail->CharSet = 'UTF-8';
-
-        $mail->setFrom($smtpUser, 'Contato Aulas de Violão');
-        $mail->addAddress($destino, 'Luis Abranches');
-        $mail->addReplyTo($email, $nome);
-        $mail->Subject = $assunto;
-        $mail->isHTML(true);
-
-        $bodyHtml = '<p>Novo lead recebido pelo site:</p>' .
-            '<ul>' .
-            '<li><strong>Nome:</strong> ' . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . '</li>' .
-            '<li><strong>Telefone:</strong> ' . htmlspecialchars($telefone, ENT_QUOTES, 'UTF-8') . '</li>' .
-            '<li><strong>E-mail:</strong> ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</li>' .
-            '<li><strong>Canal:</strong> ' . htmlspecialchars($canal, ENT_QUOTES, 'UTF-8') . '</li>' .
-            '<li><strong>Página de origem:</strong> ' . htmlspecialchars($pagina_origem, ENT_QUOTES, 'UTF-8') . '</li>' .
-            '<li><strong>Mensagem:</strong><br>' . nl2br(htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8')) . '</li>' .
-            '</ul>';
-
-        $mail->Body = $bodyHtml;
-        $mail->AltBody = "Novo lead recebido:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}";
-
-        $mail->send();
-    } catch (Exception $e) {
-        jsonResponse(false, 'Erro ao enviar o e-mail de notificação.');
-    }
+    $bodyHtml = '<p>Novo lead recebido pelo site:</p>' .
+        '<ul>' .
+        '<li><strong>Nome:</strong> ' . htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Telefone:</strong> ' . htmlspecialchars($telefone, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>E-mail:</strong> ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Canal:</strong> ' . htmlspecialchars($canal, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Página de origem:</strong> ' . htmlspecialchars($pagina_origem, ENT_QUOTES, 'UTF-8') . '</li>' .
+        '<li><strong>Mensagem:</strong><br>' . nl2br(htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8')) . '</li>' .
+        '</ul>';
+    $bodyText = "Novo lead recebido:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}";
+    $mensagemEnviada = sendNotificationEmail($assunto, $bodyHtml, $bodyText, $nome, $email);
 }
 
 if (!$salvoNoBanco) {
@@ -179,13 +146,14 @@ if (!$salvoNoBanco) {
         '<li><strong>Erro do banco:</strong> ' . htmlspecialchars($erroBanco, ENT_QUOTES, 'UTF-8') . '</li>' .
         '</ul>';
     $avisoBodyText = "Falha ao salvar lead no banco de dados. Dados recebidos:\nNome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\nCanal: {$canal}\nPágina de origem: {$pagina_origem}\nMensagem: {$mensagem}\nErro do banco: {$erroBanco}";
-    sendNotificationEmail('Falha ao salvar lead — dados abaixo', $avisoBodyHtml, $avisoBodyText, $nome, $email);
+    $notificacaoDeErro = sendNotificationEmail('Falha ao salvar lead — dados abaixo', $avisoBodyHtml, $avisoBodyText, $nome, $email);
 }
 
 $jsonData = [
     'mensagem_enviada' => $mensagemEnviada,
     'salvo_no_banco' => $salvoNoBanco,
-    'sucesso' => $mensagemEnviada || $salvoNoBanco,
+    'notificacao_erro' => $notificacaoDeErro,
+    'sucesso' => $mensagemEnviada || $salvoNoBanco || $notificacaoDeErro,
     'mensagem' => $salvoNoBanco ? 'Lead processado com sucesso.' : 'Lead não foi salvo no banco, mas seus dados foram processados.'
 ];
 
