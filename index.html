@@ -548,7 +548,7 @@
             var sucesso = false;
             if (action === 'whatsapp') {
               if (typeof gtag === 'function') {
-                gtag('event', 'conversion_lead', {
+                gtag('event', 'clique_whatsapp', {
                   'event_category': 'Lead',
                   'event_label': 'WhatsApp',
                   'transport_type': 'beacon'
@@ -572,7 +572,7 @@
               sucesso = true;
             } else if (data && data.mensagem_enviada) {
               if (typeof gtag === 'function') {
-                gtag('event', 'conversion_lead', {
+                gtag('event', 'clique_email', {
                   'event_category': 'Lead',
                   'event_label': 'Email',
                   'transport_type': 'beacon'
