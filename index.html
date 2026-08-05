@@ -510,7 +510,10 @@
           payload.append('campo_extra', '');
 
           if (action === 'whatsapp') {
-            whatsappWindow = window.open('', whatsappPopupName);
+            whatsappWindow = window.open('about:blank', whatsappPopupName);
+            if (!whatsappWindow || whatsappWindow.closed) {
+              whatsappWindow = null;
+            }
           }
           setStatus('Enviando...', false);
 
@@ -537,8 +540,14 @@
                 var url = 'https://wa.me/' + telefone + '?text=' + mensagem;
                 if (whatsappWindow && !whatsappWindow.closed) {
                   whatsappWindow.location.href = url;
+                  whatsappWindow.focus();
                 } else {
-                  window.open(url, whatsappPopupName);
+                  var popup = window.open(url, whatsappPopupName);
+                  if (!popup) {
+                    window.open(url, '_blank');
+                  } else {
+                    whatsappWindow = popup;
+                  }
                 }
                 setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
               } else {

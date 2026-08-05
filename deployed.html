@@ -540,8 +540,14 @@
                 var url = 'https://wa.me/' + telefone + '?text=' + mensagem;
                 if (whatsappWindow && !whatsappWindow.closed) {
                   whatsappWindow.location.href = url;
+                  whatsappWindow.focus();
                 } else {
-                  whatsappWindow = window.open(url, whatsappPopupName);
+                  var popup = window.open(url, whatsappPopupName);
+                  if (!popup) {
+                    window.open(url, '_blank');
+                  } else {
+                    whatsappWindow = popup;
+                  }
                 }
                 setStatus('Lead registrado com sucesso. Redirecionando para WhatsApp...', false);
               } else {
