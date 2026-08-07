@@ -73,10 +73,10 @@ if ($canal === 'email') {
     }
 }
 
-$dbHost = 'localhost';
-$dbName = 'database';
-$dbUser = 'user';
-$dbPass = 'password';
+$dbHost = getenv('DB_HOST');
+$dbName = getenv('DB_NAME');
+$dbUser = getenv('DB_USER');
+$dbPass = getenv('DB_PASS');
 
 try {
     $pdo = new PDO(
@@ -126,12 +126,12 @@ function sendNotificationEmail(string $subject, string $bodyHtml, string $bodyTe
         return false;
     }
 
-    $smtpHost = 'smtp.hostinger.com';
-    $smtpUser = 'seuusuario@seudominio.com';
-    $smtpPass = 'SUA_SENHA_SMTP';
-    $smtpPort = 587;
-    $smtpSecure = 'tls';
-    $destino = 'luisabranches.violao@gmail.com';
+       $smtpHost = getenv('SMTP_HOST');
+       $smtpUser = getenv('SMTP_USER');
+       $smtpPass = getenv('SMTP_PASS');
+       $smtpPort = (int) getenv('SMTP_PORT');
+       $smtpSecure = getenv('SMTP_SECURE');
+       $destino = getenv('DESTINO');
 
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     try {
@@ -205,7 +205,7 @@ $jsonData = [
     'salvo_no_banco' => $salvoNoBanco,
     'notificacao_erro' => $notificacaoDeErro,
     'sucesso' => true,
-    'mensagem' => 'Sua solicitação foi recebida. Entraremos em contato em breve.'
+    'mensagem' => 'Confirme enviar no seu email nativo. Entraremos em contato em breve.'
 ];
 
 echo json_encode($jsonData, JSON_UNESCAPED_UNICODE);
